@@ -1,0 +1,30 @@
+#cloud-config
+hostname: erp-lab
+
+users:
+  - name: name
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    lock_passwd: false
+    passwd: <YOUR_HASHED_PASSWORD_HERE>
+    ssh_authorized_keys:
+      - <YOUR_PUBLIC_SSH_KEY_HERE>
+
+ssh_pwauth: true
+
+package_update: true
+package_upgrade: false
+packages:
+  - curl
+  - git
+  - htop
+  - python3-pip
+  - qemu-guest-agent
+
+swap:
+  filename: /swapfile
+  size: 4G
+  maxsize: 4G
+
+runcmd:
+  - systemctl enable --now qemu-guest-agent

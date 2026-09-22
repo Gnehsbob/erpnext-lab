@@ -1,0 +1,6 @@
+*.iso
+*.qcow2
+*.img
+*.log
+.env
+*secret*
